@@ -69,8 +69,12 @@
     <!--/.Footer Links-->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://javastart.pl"> JavaStart.pl</a>
+    <div id="footer" class="footer-copyright text-center py-3">
+        <script>
+            var currentYear = new Date().getFullYear();
+            document.write("&copy; " + currentYear + " Copyright: ");
+        </script>
+        <a href="https://javastart.pl">JavaStart.pl</a>
     </div>
 
     <div th:replace="~{fragments/scripts :: imports}"></div>
