@@ -217,7 +217,10 @@
     <div class="section">
         <div class="container">
             <h2 id="szkolenia" class="mb-4">Planowane <span class="colorful-header">terminy</span></h2>
-            <div class="table-responsive">
+            <div th:if="${trainings.isEmpty()}">
+                Aktualnie nie ma planowanych terminów, po więcej informacji zapraszamy do kontaktu telefonicznego lub mailowego.
+            </div>
+            <div class="table-responsive" th:unless="${trainings.isEmpty()}">
                 <table class="table">
                     <thead>
                     <tr>
