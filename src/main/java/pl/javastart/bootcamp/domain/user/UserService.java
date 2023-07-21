@@ -107,6 +107,11 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public boolean isCurrentPasswordCorrect(String email, String currentPassword) {
+        User user = userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
+        return passwordEncoder.matches(currentPassword, user.getPassword());
+    }
+
     public User findByEmailOrThrow(String email) {
         return userRepository.findByEmail(email).orElseThrow(ResourceNotFoundException::new);
     }
