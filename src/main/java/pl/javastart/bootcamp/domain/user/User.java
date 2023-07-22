@@ -43,7 +43,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<UserRole> roles;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",  cascade = CascadeType.REMOVE)
     private List<Signup> signups;
 
     private String authKey;
