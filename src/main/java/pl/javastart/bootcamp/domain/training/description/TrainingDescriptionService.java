@@ -39,4 +39,8 @@ public class TrainingDescriptionService {
         }
         return trainingDescriptionRepository.save(trainingDescription);
     }
+
+    public void delete(TrainingDescription trainingDescription) {
+        trainingDescriptionRepository.delete(trainingDescription);
+    }
 }

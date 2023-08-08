@@ -57,5 +57,21 @@ public class AdminTrainingDescriptionController {
         return "redirect:/admin/opisy";
     }
 
+    @GetMapping("/{id}/usun")
+    public String deleteDescription(@PathVariable Long id, Model model) {
+        Optional<TrainingDescription> descriptionOptional = trainingDescriptionService.findById(id);
+        if (descriptionOptional.isPresent()) {
+            TrainingDescription trainingDescription = descriptionOptional.get();
+            if (trainingDescription.getTrainings().isEmpty()) {
+                trainingDescriptionService.delete(trainingDescription);
+            } else {
+                model.addAttribute("message", "Ten opis jest używany, nie można go usunąć!");
+            }
+            model.addAttribute("descriptions", trainingDescriptionService.findAll());
+            return "admin/descriptions";
+        } else {
+            throw new ResourceNotFoundException();
+        }
+    }
 
 }
