@@ -1,6 +1,7 @@
 package pl.javastart.bootcamp.domain.training.description;
 
 import org.springframework.stereotype.Service;
+import pl.javastart.bootcamp.config.notfound.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -38,5 +39,9 @@ public class TrainingDescriptionService {
             throw new IllegalArgumentException("ID should be not be null when updating");
         }
         return trainingDescriptionRepository.save(trainingDescription);
+    }
+
+    public void delete(TrainingDescription trainingDescription) {
+        trainingDescriptionRepository.delete(trainingDescription);
     }
 }

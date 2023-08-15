@@ -57,5 +57,16 @@ public class AdminTrainingDescriptionController {
         return "redirect:/admin/opisy";
     }
 
-
+    @GetMapping("/{id}/usun")
+    public String deleteDescription(@PathVariable Long id, Model model) {
+        Optional<TrainingDescription> descriptionOptional = trainingDescriptionService.findById(id);
+        if (descriptionOptional.isPresent()) {
+            TrainingDescription trainingDescription = descriptionOptional.get();
+            trainingDescriptionService.delete(trainingDescription);
+            model.addAttribute("descriptions", trainingDescriptionService.findAll());
+            return "admin/descriptions";
+        } else {
+            throw new ResourceNotFoundException();
+        }
+    }
 }
