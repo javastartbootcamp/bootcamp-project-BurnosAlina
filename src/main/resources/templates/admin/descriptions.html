@@ -34,14 +34,13 @@
             <td>
                 <a th:href="'/admin/opisy/' + ${description.id} + '/edytuj'">Edytuj</a>
             </td>
-            <td>
+            <td th:if="${description.getTrainings().isEmpty()}">
                 <a th:href="'/admin/opisy/' + ${description.id} + '/usun'">Usuń</a>
             </td>
         </tr>
 
         </tbody>
     </table>
-    <p th:text="${message}" style="color: red"></p>
 </div>
 
 </body>

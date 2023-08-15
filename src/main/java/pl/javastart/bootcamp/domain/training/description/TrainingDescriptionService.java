@@ -1,6 +1,7 @@
 package pl.javastart.bootcamp.domain.training.description;
 
 import org.springframework.stereotype.Service;
+import pl.javastart.bootcamp.config.notfound.ResourceNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
